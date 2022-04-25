@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/users', function () {
+    sleep(2); // loading simulations
     return Inertia::render('Users');
 });
 
