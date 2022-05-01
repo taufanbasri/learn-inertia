@@ -1,7 +1,7 @@
 <template>
-    <head>
+    <Head>
         <title>My App - Users</title>
-    </head>
+    </Head>
 
     <h1 class="text-3xl">Users</h1>
 

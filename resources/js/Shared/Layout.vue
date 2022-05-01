@@ -1,10 +1,12 @@
 <template>
+  <Head title="My App" />
+
   <section class="p-6 bg-gray-200">
     <header class="flex justify-between">
         <div class="flex items-center">
-            <h1 class="font-bold text-lg">My App</h1>
+            <h1 class="text-lg font-bold">My App</h1>
 
-            <p class="text-sm ml-4">
+            <p class="ml-4 text-sm">
                 Welcome Back, {{ username }}!
             </p>
         </div>
@@ -22,9 +24,10 @@
 
 <script>
 import Nav from './Nav.vue'
+import { Head } from "@inertiajs/inertia-vue3";
 
 export default {
-  components: { Nav },
+  components: { Nav, Head },
 
   computed: {
       username() {
