@@ -1,5 +1,4 @@
 <template>
-  <layout>
     <h1 class="text-3xl">Users</h1>
 
     <div style="margin-top: 600px">
@@ -12,16 +11,19 @@
                 Refresh
         </Link>
     </div>
-  </layout>
 </template>
 
-<script setup>
+<script>
 import { Link } from "@inertiajs/inertia-vue3";
 import Layout from '../Shared/Layout.vue';
 
-defineProps({
-    time: String
-})
+export default {
+    layout: Layout,
+
+    props: {
+        time: String
+    }
+}
 </script>
 
 <style>
