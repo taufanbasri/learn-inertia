@@ -1,7 +1,11 @@
 <template>
     <Head title="Users"/>
 
-    <h1 class="text-3xl">Users</h1>
+    <div class="flex justify-between mb-6">
+        <h1 class="text-3xl">Users</h1>
+
+        <input v-model="search" type="text" placeholder="Search..." class="px-2 border rounded-lg">
+    </div>
 
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -35,7 +39,22 @@
 </template>
 
 <script setup>
+import { Inertia } from "@inertiajs/inertia"
+import { ref } from "@vue/reactivity"
+import { watch } from "@vue/runtime-core"
 import Pagination from "../Shared/Pagination.vue"
 
-defineProps({ users: Object })
+let props = defineProps({
+    users: Object,
+    filters: Object
+})
+
+let search = ref(props.filters.search)
+
+watch(search, value => {
+    Inertia.get('/users', { search: value }, {
+        preserveState: true,
+        replace: true
+    })
+})
 </script>
