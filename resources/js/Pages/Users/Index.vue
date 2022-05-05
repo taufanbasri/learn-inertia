@@ -5,7 +5,7 @@
         <div class="flex items-center">
             <h1 class="text-3xl">Users</h1>
 
-            <Link href="/users/create" class="ml-2 text-sm text-blue-500">New User</Link>
+            <Link v-if="can.createUser" href="/users/create" class="ml-2 text-sm text-blue-500">New User</Link>
         </div>
 
         <input v-model="search" type="text" placeholder="Search..." class="px-2 border rounded-lg">
@@ -28,7 +28,7 @@
                                     </div>
                                 </td>
 
-                                <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                <td v-if="user.can.edit" class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                     <Link :href="`/users/${user.id}/edit`" class="text-indigo-600 hover:text-indigo-900">Edit</Link>
                                 </td>
                             </tr>
@@ -51,7 +51,8 @@ import debounce from "lodash/debounce"
 
 let props = defineProps({
     users: Object,
-    filters: Object
+    filters: Object,
+    can: Object
 })
 
 let search = ref(props.filters.search)
